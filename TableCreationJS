@@ -1,0 +1,121 @@
+//Set repeated data to variable. var repeat_data = window.formyoula.form_fields["c7f0-50c5-1f15"].get("repeat_value");
+
+//Create HTML variable.
+var table_html = "<div style='width: 70%;float:left;overflow-x: scroll;'><table class='table table-striped table-hover table-users'><thead><tr><th>KG,L/HA</th><th>&nbsp;</th><th>KG,L/HA</th><th>&nbsp;</th><th>KG,L/HA</th><th>&nbsp;</th><th>KG,L/HA</th><th>&nbsp;</th><th>KG,L/HA</th><th>&nbsp;</th></tr></thead><tbody style='width: 500px'>";
+//Method for update the single componenet based on id 
+function update_record(component_id) {
+	  //Loop for the repeat group record.
+	  dataLoop: for( var index_repeat = 0; index_repeat != repeat_data.length; index_repeat++ ) {
+		  //Loop for the repeated component 
+		  itemLoop: for( var index_component = 0; index_component != repeat_data[index_repeat].length; index_component++ ) {
+			  //check for the changed element.
+			  if( repeat_data[index_repeat][index_component].id == component_id )
+			  {
+				  //Set the updated data to macthed element.
+				  window.formyoula.form_fields["c7f0-50c5-1f15"].get("repeat_value")[index_repeat][index_component].value = $("#"+component_id).val();
+				  //Exist external loop.
+				  break dataLoop;
+			  }
+		  }
+	  }
+}
+
+//Loop for the repeat element.
+for(var repeat_index=0; repeat_index<repeat_data.length; repeat_index++ ) {
+  //temp variable for creating HTML row.
+  var temp_row = [];
+  //temp variable for set the component id to element.
+  var component_id = [];
+  //Inner loop for component data.
+  for(var component_index=0; component_index<repeat_data[repeat_index].length; component_index++) {
+	//Collecting component value to temp_row variable 
+	//if(repeat_data[repeat_index][component_index].value!==null||repeat_data[repeat_index][component_index].value!==''){
+	temp_row.push(repeat_data[repeat_index][component_index].value); 
+	//Collecting the component id.
+	component_id.push(repeat_data[repeat_index][component_index].id); 
+  }
+ 
+   //Updating the HTML with data.
+   table_html += "<tr><td><div style='width: 200px'><table><tr>"+
+	 "<td colspan='3' style='word-wrap: break-word'><input id="+component_id[1]+" type='text' class='form-control' onchange='update_record(this.id)' value="+temp_row[1]+"></td>"+
+	 "</tr><tr>"+
+	 "<td style='word-wrap: break-word'><input id="+component_id[2]+" type='number' class='form-control' onchange='update_record(this.id)' value="+temp_row[2]+"></td>"+
+	 "<td style='word-wrap: break-word'><input id="+component_id[3]+" type='number' class='form-control' onchange='update_record(this.id)' value="+temp_row[3]+"></td>"+
+	 "<td style='word-wrap: break-word'><input id="+component_id[4]+" type='number' class='form-control' readonly onchange='update_record(this.id)' value="+temp_row[4]+"></td>"+
+	 "</tr></table></div>"+
+	 "</td><td style='vertical-align: middle;'>+</td>"+
+	 "<td><div style='width: 200px'><table><tr>"+
+	 "<td colspan='3' style='word-wrap: break-word'><input id="+component_id[6]+" type='text' class='form-control' onchange='update_record(this.id)' value="+temp_row[6]+"></td>"+
+	 "</tr><tr>"+
+	 "<td style='word-wrap: break-word'><input id="+component_id[7]+" type='number' class='form-control' onchange='update_record(this.id)' value="+temp_row[7]+"></td>"+
+	 "<td style='word-wrap: break-word'><input id="+component_id[8]+" type='number' class='form-control' onchange='update_record(this.id)' value="+temp_row[8]+"></td>"+
+	 "<td style='word-wrap: break-word'><input id="+component_id[9]+" type='number' class='form-control' readonly onchange='update_record(this.id)' value="+temp_row[9]+"></td>"+
+	 "</tr></table></div>"+
+	 "</td><td style='vertical-align: middle;'>+</td>"+
+	 "<td><div style='width: 200px'><table><tr>"+
+	 "<td colspan='3' style='word-wrap: break-word'><input id="+component_id[11]+" type='text' class='form-control' onchange='update_record(this.id)' value="+temp_row[11]+"></td>"+
+	  "</tr><tr>"+
+	 "<td style='word-wrap: break-word'><input id="+component_id[12]+" type='number' class='form-control' onchange='update_record(this.id)' value="+temp_row[12]+"></td>"+
+	 "<td style='word-wrap: break-word'><input id="+component_id[13]+" type='number' class='form-control' onchange='update_record(this.id)' value="+temp_row[13]+"></td>"+
+	 "<td style='word-wrap: break-word'><input id="+component_id[14]+" type='number' class='form-control'readonly onchange='update_record(this.id)' value="+temp_row[14]+"></td>"+
+	 "</tr></table></div>"+
+	 "</td><td style='vertical-align: middle;'>+</td>"+
+	 "<td><div style='width: 200px'><table><tr>"+
+	 "<td colspan='3' style='word-wrap: break-word'><input id="+component_id[16]+" type='text' class='form-control' onchange='update_record(this.id)' value="+temp_row[16]+"></td>"+
+	 "</tr><tr>"+
+	 "<td style='word-wrap: break-word'><input id="+component_id[17]+" type='number' class='form-control' onchange='update_record(this.id)' value="+temp_row[17]+"></td>"+
+	 "<td style='word-wrap: break-word'><input id="+component_id[18]+" type='number' class='form-control' onchange='update_record(this.id)' value="+temp_row[18]+"></td>"+
+	 "<td style='word-wrap: break-word'><input id="+component_id[19]+" type='number' class='form-control' readonly onchange='update_record(this.id)' value="+temp_row[19]+"></td>"+
+	 "</tr></table></div>"+
+	 "</td><td style='vertical-align: middle;'>+</td>"+
+	 "<td><div style='width: 200px'><table><tr>"+
+	 "<td colspan='3' style='word-wrap: break-word'><input id="+component_id[21]+" type='text' class='form-control' onchange='update_record(this.id)' value="+temp_row[21]+"></td>"+
+	 "</tr><tr>"+
+	 "<td style='word-wrap: break-word'><input id="+component_id[22]+" type='number' class='form-control' onchange='update_record(this.id)' value="+temp_row[22]+"></td>"+
+	 "<td style='word-wrap: break-word'><input id="+component_id[23]+" type='number' class='form-control' onchange='update_record(this.id)' value="+temp_row[23]+"></td>"+
+	 "<td style='word-wrap: break-word'><input id="+component_id[24]+" type='number' class='form-control' readonly onchange='update_record(this.id)' value="+temp_row[24]+"></td>"+
+	 "</tr></table></div>"+
+	 "</td></tr>";
+
+	 	
+}
+	
+table_html += "</tbody></table></div>"+
+	 "<div style='width:30%;float:left;'>"+
+	 "<table class='table table-striped table-hover table-users'>"+
+	 "<thead><tr><th>&nbsp;</th><th>EURO/HA</th><th>Action</th></tr></thead>"+
+	 "<tbody>";
+	 
+//temp variable to calculate Grand total
+var row_total = 0;
+var grand_total = 0;
+//Loop for the repeat element.
+for(var repeat_index=0; repeat_index<repeat_data.length; repeat_index++ ) {
+  //temp variable for creating HTML row.
+  var temp_row = [];
+  //temp variable for set the component id to element.
+  var component_id = [];
+  //Inner loop for component data.
+  for(var component_index=0; component_index<repeat_data[repeat_index].length; component_index++) {
+	//Collecting component value to temp_row variable 
+	//if(repeat_data[repeat_index][component_index].value!==null||repeat_data[repeat_index][component_index].value!==''){
+	temp_row.push(repeat_data[repeat_index][component_index].value); 
+	//Collecting the component id.
+	component_id.push(repeat_data[repeat_index][component_index].id); 
+  }
+  row_total = 0;
+  if(temp_row[4]=="")temp_row[4]=0; if(temp_row[9]=="")temp_row[9]=0; if(temp_row[14]=="")temp_row[14]=0;
+   if(temp_row[19]=="")temp_row[19]=0; if(temp_row[24]=="")temp_row[24]=0;
+  row_total = parseFloat(temp_row[4])+ parseFloat(temp_row[9]) + parseFloat(temp_row[14] + parseFloat(temp_row[19]) + parseFloat(temp_row[24]));
+  console.log("row_total" + row_total);
+
+  grand_total = grand_total + row_total;
+   //Updating the HTML with data.
+   table_html +="<tr><td style='vertical-align: middle;'>=</td><td style='vertical-align:middle'><input id="+component_id[26]+" type='text' class='form-control' value="+row_total+" readonly onchange='update_record(this.id)' style='height:68px'></td>"+
+	"<td style='vertical-align:middle'><input id="+component_id[27]+" type='radio' class='radio_input' value="+temp_row[27]+" onchange='update_record(this.id)'></td></tr>";
+}
+
+table_html += "</tbody></table></div><table  class='table'><tbody><tr><td></td><td style='vertical-align:middle'>Grand Total:</td><td><input type='text' class='form-control' readonly value="+grand_total+" ></td></tbody></table></div>";
+
+//updating the view with final record.
+$(".table_data").html(table_html);
